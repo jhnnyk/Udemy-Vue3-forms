@@ -61,8 +61,9 @@ export default {
   methods: {
     addSkill(e) {
       if (e.key === ',' && this.tempSkill) {
-        if (!this.skills.includes(this.tempSkill)) {
-          this.skills.push(this.tempSkill);
+        const formattedSkill = this.tempSkill.replace(',', '');
+        if (!this.skills.includes(formattedSkill)) {
+          this.skills.push(formattedSkill);
         }
         this.tempSkill = '';
       }
