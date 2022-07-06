@@ -14,7 +14,12 @@
 
     <label>Skills:</label>
     <input type="text" v-model="tempSkill" @keyup="addSkill" />
-    <div class="pill" v-for="skill in skills" :key="skill">
+    <div
+      class="pill"
+      v-for="skill in skills"
+      :key="skill"
+      @click="deleteSkill(skill)"
+    >
       {{ skill }}
     </div>
 
@@ -68,6 +73,12 @@ export default {
         this.tempSkill = '';
       }
     },
+
+    deleteSkill(skill) {
+      this.skills = this.skills.filter((item) => {
+        return skill !== item;
+      });
+    },
   },
 };
 </script>
@@ -114,5 +125,18 @@ input[type='checkbox'] {
 .terms label,
 .names label {
   display: inline-block;
+}
+
+.pill {
+  display: inline-block;
+  margin: 20px 10px 0 0;
+  padding: 6px 12px;
+  background: #eee;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
 }
 </style>
